@@ -1,24 +1,20 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 public class Storage {
   private final static String FILE = "persons.bin";
 
   @SuppressWarnings("unchecked")
-  public static List<Person> fetchPersons() {
+  public static LinkedList<Person> fetchPersons() {
     File f = new File(FILE);
-    List<Person> list = null;
+    LinkedList<Person> list = null;
     try {
       if (!f.exists()) {
         System.out.println("INFO: Can't find " + FILE);
         return list;
       }
       ObjectInputStream in = new ObjectInputStream(new FileInputStream(FILE));
-      list = (List<Person>) in.readObject();
+      list = (LinkedList<Person>) in.readObject();
       in.close();
     } catch (Exception e) {
       System.err.println("Could not load address book from " + FILE);
