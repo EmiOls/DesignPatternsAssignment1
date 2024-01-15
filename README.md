@@ -2,7 +2,7 @@
 
 ## What happens if the designers of the Storage class decide to change the implementation of the List to LinkedList?
 
-The main method will break, since it uses the method trimToSize() doesn't exist in LinkedList.
+The main method will break, since it uses the method trimToSize() that doesn't exist in LinkedList.
 
 ## Think about the method calls in main - does trimToSize() exist in LinkedList?
 

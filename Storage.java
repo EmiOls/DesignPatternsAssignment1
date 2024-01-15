@@ -1,20 +1,24 @@
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.List;
 
 public class Storage {
   private final static String FILE = "persons.bin";
 
   @SuppressWarnings("unchecked")
-  public static ArrayList<Person> fetchPersons() {
+  public static List<Person> fetchPersons() {
     File f = new File(FILE);
-    ArrayList<Person> list = null;
+    List<Person> list = null;
     try {
       if (!f.exists()) {
         System.out.println("INFO: Can't find " + FILE);
         return list;
       }
       ObjectInputStream in = new ObjectInputStream(new FileInputStream(FILE));
-      list = (ArrayList<Person>) in.readObject();
+      list = (List<Person>) in.readObject();
       in.close();
     } catch (Exception e) {
       System.err.println("Could not load address book from " + FILE);
@@ -22,7 +26,7 @@ public class Storage {
     return list;
   }
 
-  public static void save(ArrayList<Person> list) {
+  public static void save(List<Person> list) {
     try {
       ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(FILE));
       out.writeObject(list);

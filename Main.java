@@ -1,8 +1,8 @@
-import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
   public static void main(String[] args) {
-    ArrayList<Person> persons;// = new ArrayList<>();
+    List<Person> persons;// = new ArrayList<>();
     /*
      * persons.add(new Person("Bob", "bob@email.com"));
      * persons.add(new Person("Ben", "ben@email.com"));
@@ -15,7 +15,6 @@ public class Main {
      * Storage.save(persons);
      */
     persons = Storage.fetchPersons();
-    persons.trimToSize();
     System.out.println(persons);
   }
 }
